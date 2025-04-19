@@ -72,11 +72,17 @@ void processString(const std::string& input) {
 }
 
 
-int main() {
-    std::string input;
-    std::cout << "Enter the string to encode: ";
-    std::getline(std::cin, input);
-
+int main(int argc, char* argv[]) {
+    std::vector<std::string> all_inp;
+    if (argc > 1){
+    all_inp.assign(argv+1,argv+argc);
+    }
+    std::string input = "";
+    for(const auto& x : all_inp){
+        input.append(x);
+        input.append(" ");
+    }
+    std::cout<<input;
     processString(input);
 
     std::cout << "All frames saved in 'encoded_imgs/' directory." << std::endl;
